@@ -1,13 +1,11 @@
 package charlene.coffe.corner.data.menu.items;
 
-import charlene.coffe.corner.data.Price;
 import charlene.coffe.corner.utils.Constants;
 import charlene.coffe.corner.utils.receipt.ReceiptItemFormatter;
-import jdk.jshell.spi.ExecutionControl;
 
 import java.math.BigDecimal;
 
-public abstract class MenuItem implements Price, ReceiptItemFormatter {
+public abstract class MenuItem implements ReceiptItemFormatter {
 
     private String title;
     private BigDecimal price;
@@ -31,7 +29,6 @@ public abstract class MenuItem implements Price, ReceiptItemFormatter {
     }
 
 
-    @Override
     public BigDecimal getPrice() {
         return this.price;
     }
@@ -53,5 +50,9 @@ public abstract class MenuItem implements Price, ReceiptItemFormatter {
     @Override
     public String formatForReceipt() {
         return String.format(Constants.MENU_ITEM_RECEIPT_FORMAT, title, price, Constants.CURRENCY);
+    }
+
+    public BigDecimal getDiscountPrice() {
+        return this.price;
     }
 }

@@ -1,9 +1,13 @@
-1   large Coffee                         3.50 CHF
-	Extra milk                           0.30 CHF
+1   large Coffee                        3.50 CHF
+	Extra milk                          0.30 CHF
 
-1   small Coffee                         2.50 CHF
-	Special roast                        0.90 CHF
+1   small Coffee                        2.50 CHF
+	Special roast                       0.90 CHF
 
-1   Orange juice                         3.95 CHF
+1   Bacon Roll                          4.50 CHF
 
-	total price:                        11.15 CHF
+1   Orange juice                        3.95 CHF
+
+1   Discount Extra milk                -0.30 CHF
+
+	total price:                       15.35 CHF

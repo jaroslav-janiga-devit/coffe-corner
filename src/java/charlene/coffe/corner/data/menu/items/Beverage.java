@@ -58,5 +58,7 @@ public class Beverage extends MenuItem {
                 (extra == null ? "" : "\n" + extra.formatForReceipt());
     }
 
-
+    public Extra getExtra() {
+        return extra;
+    }
 }

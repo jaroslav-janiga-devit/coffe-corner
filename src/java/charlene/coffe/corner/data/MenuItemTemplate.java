@@ -1,7 +1,7 @@
 package charlene.coffe.corner.data;
 
 import charlene.coffe.corner.data.menu.items.Beverage;
-import charlene.coffe.corner.data.menu.items.Meal;
+import charlene.coffe.corner.data.menu.items.Snack;
 import charlene.coffe.corner.data.menu.items.MenuItem;
 import charlene.coffe.corner.data.menu.types.BeverageSize;
 
@@ -33,7 +33,7 @@ public enum MenuItemTemplate {
     LARGE_COFFEE_SPECIAL_ROAST(() -> new Beverage("Coffee", ExtrasTemplate.SPECIAL_ROAST.create(), BeverageSize.LARGE)),
 
     //MEALS
-    BEACON_ROLL(() -> new Meal("Beacon Roll", BigDecimal.valueOf(4.50)));
+    BEACON_ROLL(() -> new Snack("Bacon Roll", BigDecimal.valueOf(4.50)));
 
 
     private static Map<String, MenuItemTemplate> menuItems;

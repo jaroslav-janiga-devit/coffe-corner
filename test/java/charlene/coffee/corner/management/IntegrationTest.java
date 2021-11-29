@@ -42,4 +42,15 @@ public class IntegrationTest {
         Assert.assertEquals(expectedReceipt,currentReceipt);
     }
 
+    @Test
+    public void snackAndBeverageDiscountTest() {
+        String input = "large coffee with foamed milk, bacon roll";
+        String expectedReceipt = ResourceReaderUtil.readReceipt("receipts/integration-snack-and-beverage-discount-receipt");
+        CashRegister cashRegister = new CashRegister();
+        InputParser.parseInputItems(input)
+                .forEach(cashRegister::addMenuItem);
+        String currentReceipt = cashRegister.printReceipt();
+        Assert.assertEquals(expectedReceipt,currentReceipt);
+    }
+
 }

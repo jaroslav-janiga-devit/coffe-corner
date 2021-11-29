@@ -20,6 +20,7 @@ public class CashRegister {
     }
 
     public String printReceipt(){
+        basket.applySnackAndBeverageDiscount();
         return ReceiptPrinter.createReceipt(this.basket);
     }
 

@@ -1,6 +1,6 @@
 package charlene.coffe.corner.management;
 
-import charlene.coffe.corner.data.menu.items.MenuItem;
+import charlene.coffe.corner.data.menu.items.*;
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
@@ -16,7 +16,7 @@ public class Basket {
     }
 
     public void add(MenuItem menuItem) {
-        if(menuItem == null) return;
+        if (menuItem == null) return;
         items.stream()
                 .filter(basketItem -> basketItem.contains(menuItem))
                 .findFirst()
@@ -24,7 +24,7 @@ public class Basket {
     }
 
     public void remove(MenuItem menuItem) {
-        if(menuItem == null) return;
+        if (menuItem == null) return;
         Optional<BasketItem> item = items.stream()
                 .filter(basketItem -> basketItem.contains(menuItem))
                 .findFirst();
@@ -42,6 +42,30 @@ public class Basket {
         return items.stream()
                 .map(BasketItem::price)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public void applySnackAndBeverageDiscount() {
+        if (containsSnackAndBeverage()) {
+            Extra extraForDiscount = findExtraForDiscount();
+            if (extraForDiscount != null) {
+                DiscountItem discount = new DiscountItem(extraForDiscount);
+                this.add(discount);
+            }
+        }
+    }
+
+    private Extra findExtraForDiscount() {
+        return items.stream()
+                .filter(i -> i.getMenuItem() instanceof Beverage
+                        && ((Beverage) i.getMenuItem()).getExtra() != null)
+                .findFirst()
+                .map(item -> ((Beverage) item.getMenuItem()).getExtra())
+                .orElse(null);
+    }
+
+    private boolean containsSnackAndBeverage() {
+        return items.stream().anyMatch(i -> i.getMenuItem() instanceof Beverage)
+                && items.stream().anyMatch(i -> i.getMenuItem() instanceof Snack);
     }
 
     private BasketItem create(MenuItem menuItem) {
